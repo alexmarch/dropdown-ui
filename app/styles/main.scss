@@ -1,28 +1,120 @@
 @import "compass/css3";
 @import "compass/utilities";
+@import "../../bower_components/sass-bootstrap/lib/_variables.scss";
+@import "../../bower_components/sass-bootstrap/lib/_mixins.scss";
+@import "../../bower_components/sass-bootstrap/lib/_labels.scss";
+@import "../../bower_components/sass-bootstrap/lib/_dropdowns.scss";
+@import "../../bower_components/sass-bootstrap/lib/_buttons.scss";
+@import url(http://fonts.googleapis.com/css?family=Lato:400,700);
+
+$dropdownTextColor: #565656;
+$dropdownFontSize: 14px;
+
+$greenCircleColor: #35ac9d;
+$blueCircleColor: #3397da;
+$yellowCircleColor: #ffd83a;
+$redCircleColor: #f34c77;
 
 
-.select2-results{
-  input[type="ckeckbox"]{
-    margin: 0px;
+.dropdown{
+    .dropdown-menu{
+        border: none !important;
+        box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.4) !important;
+    }
+    .dropdown-toggle{
+      text-decoration: none;
+      color: $dropdownTextColor;
+      font-family: 'Lato', sans-serif;
+      font-weight: bold;
+      font-size: $dropdownFontSize;
+      background: #fff;
+
+      &.btn{
+        border: 1px solid #cecece !important;
+        background: #fff;
+        width:93px;
+        &:focus{
+          outline: none;
+        }
+      }
+      .arrow{
+        width: 9px;
+        height: 6px;
+        display: inline-block;
+        margin-left: 15px;
+        background: url(../images/arrow.png) no-repeat !important;
+      }
+    }
+}
+.dropdown-menu{
+  font-family: 'Lato', sans-serif;
+  min-width:116px !important;
+  input{
+    &[type=checkbox]{
+      padding: 3px;
+      opacity: 0;
+    }
+    &[type=checkbox]:checked + .ui-checkbox{
+      &:after{
+        opacity: 0.5;
+      }
+    }
+  }
+  li{
+    padding-left: 10px;
+    position: relative;
+    padding: 4px 4px 4px 10px;
+    &:hover{
+      background: #f0f0f0;
+      cursor: pointer;
+    }
+  }
+  .ui-checkbox{
+    cursor: pointer;
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    top: 4px;
+    left: 8px;
+    background: #fff;
+    border:1px solid #e3e3e3;
+    color: red;
+    &:after{
+      opacity: 0;
+      content: '';
+      position: absolute;
+      width: 9px;
+      height: 5px;
+      background: transparent;
+      top: 2px;
+      left: 2px;
+      border: 3px solid #333;
+      border-top: none;
+      border-right: none;
+      color: red;
+      @include transform(rotate(-45deg));
+    }
   }
 }
 
 .circle{
-  $width: 10px;
-  $height: 10px;
+  $width: 12px;
+  $height: 12px;
   width: $width;
   height: $height;
   @include border-radius($width / 2);
   display: inline-block;
-  margin: 0px 3px 0px 3px;
+  margin: 0px 5px 0px 5px;
+  &.yellow{
+    background: $yellowCircleColor;
+  }
   &.red{
-    background: Red
-  };
+    background: $redCircleColor;
+  }
   &.green{
-    background: Green
+    background: $greenCircleColor;
   }
   &.blue{
-    background: Blue
+    background: $blueCircleColor;
   }
 }
